@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Temporarily highlight all elements */
+/* border: 1px solid red; */
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  font: clamp(12px, 1.1vmax, 14px) Rubik, Arial, sans-serif;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+/* offset scroll target to compensate for the page header */
+:target:before {
+  content: "";
+  display: block;
+}
+
+/* Used in conjunction with js to stop all transitions when the window is being resized. This prevents an artifact where
+   the navbar appears open and then transitions to the closed state (when the media query boundary is crossed). */
+body.stop-transitions * {
+  transition: none !important;
+}
+
+.clear {
+  clear: both;
+  height: 3vh;
+}

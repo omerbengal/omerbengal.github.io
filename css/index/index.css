@@ -1,0 +1,38 @@
+#page-wrap {
+    width: 100%;
+    padding: 10vmax 3vmax;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.index {
+    text-decoration: underline !important;
+}
+
+h1 {
+    color: white;
+    font-size: min(6rem, 6vw);
+}
+
+p {
+    color: white;
+    font-size: min(4rem, 4vw);
+}
+
+.content {
+    width: 60vw;
+}
+
+.learnMoreButton {
+    font-size: min(4rem, 4vw);
+    color: white;
+}
+
+.reichmanPortraitImg {
+    top: 5vh;
+    right: 0;
+    position: absolute;
+    width: 40vw;
+    height: auto;
+    max-width: 30%;
+}
