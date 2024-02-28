@@ -1,0 +1,87 @@
+.ContactBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 150px;
+    position: relative;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: 0;
+    box-shadow: hsl(210deg 87% 36%) 0px 7px 0px 0px;
+    background-color: hsl(210deg 100% 44%);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 31ms cubic-bezier(.5, .7, .4, 1);
+}
+
+.ContactBtn:before {
+    content: attr(alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 4px;
+    opacity: 1;
+}
+
+.ContactBtn:active {
+    box-shadow: none;
+    transform: translateY(7px);
+    transition: 35ms cubic-bezier(.5, .7, .4, 1);
+}
+
+.ContactBtn:hover:before {
+    transition: all .0s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.ContactBtn i {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-style: normal;
+    transition: all 2s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+.ContactBtn:hover i {
+    transition: all .2s ease;
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.ContactBtn:hover i:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.ContactBtn:hover i:nth-child(2) {
+    transition-delay: calc(0.1s * 2);
+}
+
+.ContactBtn:hover i:nth-child(3) {
+    transition-delay: calc(0.1s * 3);
+}
+
+.ContactBtn:hover i:nth-child(4) {
+    transition-delay: calc(0.1s * 4);
+}
+
+.ContactBtn:hover i:nth-child(5) {
+    transition-delay: calc(0.1s * 5);
+}
+
+.ContactBtn:hover i:nth-child(6) {
+    transition-delay: calc(0.1s * 6);
+}
+
+.ContactBtn:hover i:nth-child(7) {
+    transition-delay: calc(0.1s * 7);
+}
