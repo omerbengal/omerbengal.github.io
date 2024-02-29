@@ -102,7 +102,8 @@
             </div>
 
             <label>
-                <input required="" placeholder="" type="email" class="input">
+                <input required="" placeholder="" type="text"
+                    pattern="[a-zA-Z]+[a-zA-Z0-9]*@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}" class="input">
                 <span>email</span>
             </label>
 
@@ -117,13 +118,22 @@
                 <span>message</span>
             </label>
 
-            <button class="fancy" href="#">
+            <!--TODO: change href and add js to send whatsapp message-->
+            <button class="button" href="#">
                 <span class="top-key"></span>
                 <span class="text">submit</span>
                 <span class="bottom-key-1"></span>
                 <span class="bottom-key-2"></span>
             </button>
         </form>
+
+        <div class="ThankYouBlock">
+            <div class="ThankYouBlock-overlay"></div>
+            <div class="ThankYouBlock-inner">
+                <thxTag>Thank you!</thxTag><br><br>I will make sure<br>to contact you shortly!
+            </div>
+        </div>
+
     </div>
 
     <footer>
