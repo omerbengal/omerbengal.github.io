@@ -1,0 +1,57 @@
+.typingDiv {
+    margin-top: -6vh;
+    z-index: 1;
+}
+
+.typingDiv p {
+    color: white;
+    font-weight: bold;
+    font-size: 6vw;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .typingDiv p {
+        font-size: 4vh;
+    }
+}
+
+.typingDiv p span.typingSpan {
+    font-weight: bold;
+    color: #c15dff;
+}
+
+.typingDiv p span.cursor {
+    display: inline-block;
+    background-color: #ccc;
+    width: 3px;
+    animation: blink 1s infinite;
+}
+
+.typingDiv p span.cursor.typing {
+    animation: none;
+}
+
+@keyframes blink {
+    0% {
+        background-color: #ccc;
+    }
+
+    49% {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    99% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: #ccc;
+    }
+}

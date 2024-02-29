@@ -1,0 +1,23 @@
+#page-wrap {
+    width: 100%;
+    padding-left: 5vmax;
+    padding-right: 5vmax;
+    padding-top: 18vh;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.about-me {
+    text-decoration: underline !important;
+}
+
+p {
+    color: white;
+    font-size: 2vw;
+}
+
+@media (max-width: 768px) {
+    p {
+        font-size: 2vh;
+    }
+}

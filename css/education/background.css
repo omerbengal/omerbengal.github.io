@@ -1,0 +1,130 @@
+.logoImage {
+    color: white;
+}
+
+.background-container {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.stars {
+    background: black url("../../images/education/stars.png") repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    z-index: 0;
+}
+
+.twinkling {
+    --duration: 70s;
+    width: 10000px;
+    height: 100%;
+    background: transparent url("../../images/education/twinkling.png") repeat;
+    background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.clouds {
+    --duration: 100s;
+    width: 10000px;
+    height: 100%;
+    background: transparent url("../../images/education/clouds_repeat.png") repeat;
+    background-size: 70vmax 70vmax;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    -moz-animation: move-clouds var(--duration) linear infinite;
+    -ms-animation: move-clouds var(--duration) linear infinite;
+    -o-animation: move-clouds var(--duration) linear infinite;
+    -webkit-animation: move-clouds var(--duration) linear infinite;
+    animation: move-clouds var(--duration) linear infinite;
+}
+
+.backgroundImg {
+    height: 45vmax;
+    width: 45vmax;
+    position: absolute;
+    z-index: 3;
+    right: -120px;
+    top: -50px;
+}
+
+@media (max-width: 768px) {
+    .backgroundImg {
+        height: 35vmax;
+        width: 35vmax;
+        right: -100px;
+        top: -40px;
+    }
+}
+
+@keyframes move-clouds {
+
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 0;
+    }
+
+    10% {
+        transform: translate3d(500px, 0px, 0px);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translate3d(1000px, 0px, 0px);
+        opacity: 0.5;
+    }
+
+    30% {
+        transform: translate3d(1500px, 0px, 0px);
+        opacity: 0.8;
+    }
+
+    40% {
+        transform: translate3d(2000px, 0px, 0px);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translate3d(2500px, 0px, 0px);
+        opacity: 0.6;
+    }
+
+    60% {
+        transform: translate3d(3000px, 0px, 0px);
+        opacity: 0.1;
+    }
+
+    70% {
+        transform: translate3d(3500px, 0px, 0px);
+        opacity: 0.75;
+    }
+
+    80% {
+        transform: translate3d(4000px, 0px, 0px);
+        opacity: 0.5;
+    }
+
+    90% {
+        transform: translate3d(4500px, 0px, 0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(5000px, 0px, 0px);
+        opacity: 0;
+    }
+}
