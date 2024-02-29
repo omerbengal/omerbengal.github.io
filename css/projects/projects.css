@@ -1,0 +1,22 @@
+#page-wrap {
+    width: 100%;
+    padding: 10vmax 3vmax;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.projects {
+    text-decoration: underline !important;
+}
+
+.navbar a {
+    color: black !important;
+}
+
+.navbar a:hover {
+    color: darkgray !important;
+}
+
+.icons {
+    color: black !important;
+}
