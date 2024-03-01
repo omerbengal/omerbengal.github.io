@@ -1,6 +1,6 @@
 .card {
     position: absolute;
-    width: 25vw;
+    width: 35vw;
     height: 30vh;
     background-color: #b6b5b5;
     border-radius: 10px;
@@ -61,8 +61,14 @@
 }
 
 .card:hover .main-title {
+    scale: 1;
+    transition: scale 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card.expanded .main-title {
     scale: 0;
 }
+
 
 .card__description {
     padding-bottom: 10px;
@@ -74,4 +80,30 @@
 
 .card:hover .card__description {
     color: #777;
+}
+
+@media (max-width: 768px) {
+
+    .card1,
+    .card2 {
+        top: calc(10px + 10vh);
+    }
+
+    .card3,
+    .card4 {
+        top: 45vh;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .card1,
+    .card2 {
+        top: calc(100px + 5vh);
+    }
+
+    .card3,
+    .card4 {
+        top: calc(300px + 20vh);
+    }
 }

@@ -88,46 +88,54 @@
     </header>
 
     <div id="page-wrap">
-        <form class="form">
-            <div class="flex">
-                <label>
-                    <input required="" placeholder="" type="text" class="input">
-                    <span>first name</span>
-                </label>
+        <form class="form" id="form">
+            <div class="input-wrapper">
+                <div class="flex">
+                    <label>
+                        <input required="" placeholder=" " type="text" class="input" id="firstName">
+                        <span>first name</span>
+                    </label>
 
+                    <label>
+                        <input required="" placeholder=" " type="text" class="input" id="lastName">
+                        <span>last name</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
                 <label>
-                    <input required="" placeholder="" type="text" class="input">
-                    <span>last name</span>
+                    <input required="" placeholder=" " type="text"
+                        pattern="[a-zA-Z]+[a-zA-Z0-9.]*@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,}" class="input" id="email">
+                    <span>email</span>
                 </label>
             </div>
 
-            <label>
-                <input required="" placeholder="" type="text"
-                    pattern="[a-zA-Z]+[a-zA-Z0-9]*@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}" class="input">
-                <span>email</span>
-            </label>
+            <div class="input-wrapper">
+                <label>
+                    <input required="" type="text"
+                        pattern="0[0-9]{2}-?[0-9]{4}-?[0-9]{3}|972[0-9]{2}-?[0-9]{4}-?[0-9]{3}|[+]{1}972[0-9]{2}-?[0-9]{4}-?[0-9]{3}"
+                        placeholder=" " class="input" id="phoneNumber">
+                    <span>phone number</span>
+                </label>
+            </div>
+            <div class="input-wrapper">
+                <label>
+                    <textarea required="" rows="1" placeholder="" class="message" id="message"
+                        oninput='this.style.height = "auto"; this.style.height = this.scrollHeight + 2 + "px";'></textarea>
+                    <span>message</span>
+                </label>
+            </div>
 
-            <label>
-                <input required="" type="text"
-                    pattern="0[0-9]{2}-?[0-9]{4}-?[0-9]{3}|972[0-9]{2}-?[0-9]{4}-?[0-9]{3}|[+]{1}972[0-9]{2}-?[0-9]{4}-?[0-9]{3}"
-                    placeholder="" class="input">
-                <span>phone number</span>
-            </label>
-            <label>
-                <textarea required="" rows="2" placeholder="" class="message"></textarea>
-                <span>message</span>
-            </label>
-
-            <!--TODO: change href and add js to send whatsapp message-->
-            <button class="button" href="#">
+            <button class="button" type="submit">
                 <span class="top-key"></span>
-                <span class="text">submit</span>
+                <span class="text">send</span>
                 <span class="bottom-key-1"></span>
                 <span class="bottom-key-2"></span>
             </button>
         </form>
 
-        <div class="ThankYouBlock">
+        <div class="ThankYouBlock" id="ThankYouBlock">
             <div class="ThankYouBlock-overlay"></div>
             <div class="ThankYouBlock-inner">
                 <thxTag>Thank you!</thxTag><br><br>I will make sure<br>to contact you shortly!
@@ -176,7 +184,7 @@
             <span>Email</span>
         </a>
 
-        <a href="form.html" target="_blank" style="text-decoration: none;">
+        <a href="form.html" style="text-decoration: none;">
             <button alt="contact" class="ContactBtn">
                 <i>C</i>
                 <i>o</i>
@@ -189,6 +197,44 @@
         </a>
 
     </footer>
+
+
+    <script>
+        var form = document.getElementById('form');
+        form.addEventListener('submit', function (event) {
+            // Prevent the form from submitting
+            event.preventDefault();
+
+            // Check if the form is valid
+            if (this.checkValidity()) {
+                var thankYouBlock = document.getElementById('ThankYouBlock');
+                form.style.transform = 'translate(-50%, -50%) scale(0)';
+                thankYouBlock.style.transform = 'translate(-50%, -50%) scale(1)';
+
+                var firstName = document.getElementById('firstName').value;
+                var lastName = document.getElementById('lastName').value;
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+
+                var phoneNumber = document.getElementById('phoneNumber').value;
+                if (phoneNumber.startsWith('0')) {
+                    phoneNumber = phoneNumber.replace('0', '+972');
+                }
+                if (phoneNumber.startsWith('972')) {
+                    phoneNumber = '+' + phoneNumber;
+                }
+                phoneNumber = phoneNumber.replace(/-/g, '');
+
+                var finalMessageInUrlEncoding = encodeURIComponent('*A new contact request just arrived from the website*\n\nFirst Name: ' + firstName + '\nLast Name: ' + lastName + '\nEmail: ' + email + '\nPhone Number: ' + phoneNumber + '\nMessage: ' + message);
+
+                const Http = new XMLHttpRequest();
+                // please do not steel the following api key! ♥️
+                const url = 'https://api.callmebot.com/whatsapp.php?phone=972548111733&text=' + finalMessageInUrlEncoding + '&apikey=4581714';
+                Http.open("GET", url);
+                Http.send();
+            }
+        });
+    </script>
 
 </body>
 
