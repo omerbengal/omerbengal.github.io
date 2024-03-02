@@ -21,7 +21,7 @@
 
 h1 {
     color: white;
-    font-size: 4.5vw;
+    font-size: 5vw;
 }
 
 h2 {
@@ -30,12 +30,12 @@ h2 {
 }
 
 .educationList {
-    padding-left: 50px;
+    padding-left: 5vw;
 }
 
 .educationList li {
     color: white;
-    font-size: 2.5vw;
+    font-size: 3vw;
     padding: 10px 0;
 }
 
@@ -45,7 +45,7 @@ h2 {
 }
 
 .subEducationList li {
-    font-size: 1.75vw;
+    font-size: 2vw;
 }
 
 .subEducationList li::before {
@@ -53,4 +53,14 @@ h2 {
     padding-right: 10px;
     font-size: 1.5vw;
     vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .educationList li {
+        font-size: 3.5vw;
+    }
+
+    .subEducationList li {
+        font-size: 3vw;
+    }
 }

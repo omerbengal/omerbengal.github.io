@@ -3,9 +3,9 @@
     align-items: center;
     justify-content: center;
     height: 50px;
-    width: 150px;
+    width: calc(75px + 5vw);
+    min-width: 100px;
     position: relative;
-    font-size: 18px;
     text-transform: uppercase;
     border: 0;
     box-shadow: hsl(210deg 87% 36%) 0px 7px 0px 0px;
@@ -22,7 +22,7 @@
     justify-content: center;
     position: absolute;
     inset: 0;
-    font-size: 15px;
+    font-size: calc(0.5em + 1vw);
     font-weight: bold;
     color: white;
     letter-spacing: 4px;
@@ -43,7 +43,7 @@
 
 .ContactBtn i {
     color: white;
-    font-size: 15px;
+    font-size: calc(0.5em + 1vw);
     font-weight: bold;
     letter-spacing: 4px;
     font-style: normal;

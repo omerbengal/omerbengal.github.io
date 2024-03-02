@@ -1,6 +1,7 @@
 .linkedInBtn {
-    width: 50px;
+    width: auto;
     height: 50px;
+    min-width: 50px;
     background-color: #0b65c2;
     display: flex;
     overflow: hidden;
@@ -35,7 +36,7 @@
 }
 
 .linkedInBtn:hover::after {
-    animation: sideClip 0.5s linear;
+    animation: sideClip 0.3s linear;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     opacity: 1;

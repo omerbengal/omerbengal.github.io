@@ -188,8 +188,9 @@
 
   </footer>
 
-  <script>
+  <!--script for hovering / clicking / touching the cards to open or close them-->
 
+  <script>
     function openCard(card) {
       card.style.transform = 'scale(1.2)';
       card.style.overflowY = 'scroll';
@@ -213,27 +214,46 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+      // get all cards
       var cards = document.querySelectorAll('.card');
 
       cards.forEach(function (card) {
-        card.addEventListener('click', function () {
-          // Check if the card is already expanded
+
+        // hover-in
+        card.addEventListener('mouseenter', function () {
+          if (!card.classList.contains('expanded')) {
+            openCard(card);
+          }
+        });
+
+        // hover-out
+        card.addEventListener('mouseleave', function () {
           if (card.classList.contains('expanded')) {
-            // Reverse the animation
+            closeCard(card);
+          }
+        });
+
+        // click
+        card.addEventListener('click', function () {
+          if (card.classList.contains('expanded')) {
             closeCard(card);
           } else {
-            //close all other open cards
-            cards.forEach(function (c) {
-              if (c !== card && c.classList.contains('expanded')) {
-                closeCard(c);
-              }
-            });
-            // Apply the animation
+            openCard(card);
+          }
+        });
+
+        // touch
+        card.addEventListener('touchstart', function (event) {
+          event.preventDefault(); // Prevent the browser from acting like we pressed the card
+          if (card.classList.contains('expanded')) {
+            closeCard(card);
+          } else {
             openCard(card);
           }
         });
       });
     });
+
   </script>
 
 

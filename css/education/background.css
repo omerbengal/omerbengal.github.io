@@ -54,22 +54,31 @@
 }
 
 .backgroundImg {
-    height: 45vmax;
-    width: 45vmax;
+    height: calc(175px + 30vw);
+    width: calc(175px + 30vw);
     position: absolute;
     z-index: 3;
-    right: -120px;
-    top: -50px;
+    right: calc(-175px + 7.5vw);
+    top: calc(-150px + 10vh);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .backgroundImg {
-        height: 35vmax;
-        width: 35vmax;
+        height: 35vw;
+        width: 35vw;
         right: -100px;
         top: -40px;
     }
 }
+
+@media (max-width: 635px) {
+    .backgroundImg {
+        height: 30vw;
+        width: 30vw;
+        right: -80px;
+        top: -30px;
+    }
+} */
 
 @keyframes move-clouds {
 
