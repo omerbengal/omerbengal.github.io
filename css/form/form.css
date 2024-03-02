@@ -78,7 +78,7 @@
 
 .form label .message+span {
     position: absolute;
-    left: 0.7vw;
+    left: 10px;
     top: 35%;
     color: grey;
     font-size: 1em;

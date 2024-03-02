@@ -12,7 +12,7 @@
 }
 
 .stars {
-    background: black url("../../images/education/stars.png") repeat;
+    background: black url("../../images/education/stars.avif") repeat;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -26,7 +26,7 @@
     --duration: 70s;
     width: 10000px;
     height: 100%;
-    background: transparent url("../../images/education/twinkling.png") repeat;
+    background: transparent url("../../images/education/twinkling.avif") repeat;
     background-size: 1000px 1000px;
     position: absolute;
     right: 0;
@@ -39,7 +39,7 @@
     --duration: 100s;
     width: 10000px;
     height: 100%;
-    background: transparent url("../../images/education/clouds_repeat.png") repeat;
+    background: transparent url("../../images/education/clouds_repeat.avif") repeat;
     background-size: 70vmax 70vmax;
     position: absolute;
     right: 0;
