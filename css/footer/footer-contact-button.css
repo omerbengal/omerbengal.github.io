@@ -22,10 +22,10 @@
     justify-content: center;
     position: absolute;
     inset: 0;
-    font-size: calc(0.5em + 1vw);
+    font-size: calc(1em + 0.5vw);
     font-weight: bold;
     color: white;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     opacity: 1;
 }
 
@@ -43,9 +43,9 @@
 
 .ContactBtn i {
     color: white;
-    font-size: calc(0.5em + 1vw);
+    font-size: calc(1em + 0.5vw);
     font-weight: bold;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     font-style: normal;
     transition: all 2s ease;
     transform: translateY(-20px);
