@@ -38,12 +38,16 @@ I have multiple javascript files that I use across my website:
     
 3. `js/employment/lottieData.js` - Its _SOLE_ purpose is to hold a variable that contains the json data of the chat animation in the employment page.
 
-4. `js/hobbies/carusel.js` - Its purpose is to handle the functionality of the photos and videos carousel in the hobbies page.
+4. `js/footer/footer-mobile-link-delay.js` - Its _SOLE_ purpose is to make sure that if the website is being opened NOT from a computer - the opening of the footer's links are being delayed a bit so that the user could see the animation of the buttons.
+
+5. `js/form/form-submission.js` - Its purpose is to modify the css of the "Thank you" block such that it appears when a form is submitted. Also - the javascript code sends me a whatsapp message with an API to let me know that someone requested me to contact him.
+
+6. `js/hobbies/carusel.js` - Its purpose is to handle the functionality of the photos and videos carousel in the hobbies page.
     The key aspects here are:
     - "changeItem" function that is responsible for changing the currently displayed photo/video in the carousel.
     - Two click event listeners addition to the "prev" and "next" buttons which triggers the "changeItem" function.
     
-5. `js/projects/cards.js` - Its purpose is to manage the opening and closing of projects' cards in the projects page.\
+7. `js/projects/cards.js` - Its purpose is to manage the opening and closing of projects' cards in the projects page.\
     The key aspects here are:
     - The entire code here is based on an "expanded" class which being added or removed to the card element. That is the way of recognizing if a card is open or closed.
     - The "openCard" and "closeCard" functions modify a given card's and its child elements' style.
