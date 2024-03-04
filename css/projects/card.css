@@ -21,7 +21,7 @@
     transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card.hover {
+.card.expanded {
     overflow-y: scroll;
     transform: scale(1.2);
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
@@ -42,7 +42,7 @@
     transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card.hover .card__content {
+.card.expanded .card__content {
     transform: rotateX(0deg);
 }
 
@@ -56,29 +56,34 @@
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card.hover .card__title {
+.card.expanded .card__title {
     color: #333;
 }
 
-.card.hover .main-title {
+.card.expanded .main-title {
     scale: 1;
     transition: scale 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card.expanded .main-title {
+/* removed this because it was duplicated */
+/* .card.expanded .main-title {
     scale: 0;
-}
-
+} */
 
 .card__description {
     padding-bottom: 10px;
     font-size: calc(8px + 0.5vw);
-    color: #b6b5b5;
+    background-color: #b6b5b5;
     line-height: 1.4;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card.hover .card__description {
+.gihubRepoLink {
+    font-size: calc(8px + 1vw);
+    color: #777;
+}
+
+.card.expanded .card__description {
     color: #777;
 }
 
