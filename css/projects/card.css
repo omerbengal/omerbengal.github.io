@@ -80,7 +80,7 @@
 
 .gihubRepoLink {
     font-size: calc(8px + 1vw);
-    color: #777;
+    color: #777 !important;
 }
 
 .card.expanded .card__description {

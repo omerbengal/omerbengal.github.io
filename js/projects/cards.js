@@ -31,7 +31,7 @@ function closeAllOtherCards(cards, card) {
 
 document.addEventListener('DOMContentLoaded', function () {
     // get all cards
-    var cards = document.querySelectorAll('.card');
+    let cards = document.querySelectorAll('.card');
 
     cards.forEach(function (card) {
 
