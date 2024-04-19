@@ -104,6 +104,10 @@
         height: 22rem;
     }
 
+    #check:not(:checked)~.navbar {
+        height: 0.1px;
+    }
+
     #check:checked~.navbar a {
         transform: translateY(0);
         opacity: 1;
