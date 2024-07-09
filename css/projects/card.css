@@ -1,7 +1,7 @@
 .card {
     position: absolute;
-    width: 35vw;
-    height: 30vh;
+    width: 39vw;
+    height: 20vh;
     background-color: #b6b5b5;
     border-radius: 10px;
     display: flex;
@@ -91,12 +91,17 @@
 
     .card1,
     .card2 {
-        top: calc(10px + 10vh);
+        top: calc(10vh);
     }
 
     .card3,
     .card4 {
-        top: 45vh;
+        top: calc(210px + 10vh);
+    }
+
+    .card5,
+    .card6 {
+        top: calc(426px + 10vh);
     }
 }
 
@@ -104,11 +109,16 @@
 
     .card1,
     .card2 {
-        top: calc(100px + 5vh);
+        top: calc(100px + 4vh);
     }
 
     .card3,
     .card4 {
-        top: calc(300px + 20vh);
+        top: calc(325px + 4vh);
+    }
+
+    .card5,
+    .card6 {
+        top: calc(550px + 4vh);
     }
 }
