@@ -2,7 +2,7 @@ const by = (selector) => document.querySelector(selector);
 const $typingText = by('.typingSpan');
 const $cursor = by('.cursor');
 
-const words = ['hard', 'fun', 'passion', 'a journey', 'LIFE'];
+const words = ['innovation', 'automation', 'solving problems', 'building', 'MY FUTURE'];
 const delay = {
     typing: 150,
     keeping: 750,

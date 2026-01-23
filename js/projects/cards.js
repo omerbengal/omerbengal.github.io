@@ -1,5 +1,5 @@
 function openCard(card) {
-    card.style.transform = 'scale(1.2)';
+    card.style.transform = 'scale(1.1)';
     card.style.overflowY = 'scroll';
     card.querySelector('.card__content').style.transform = 'rotateX(0deg)';
     card.querySelector('.card__title').style.color = '#333';

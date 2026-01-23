@@ -9,7 +9,18 @@
     justify-content: center;
     overflow: hidden;
     perspective: 1000px;
-    transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                overflow-y 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+}
+
+.card:hover {
+    z-index: 1001;
+}
+
+.card.expanded {
+    z-index: 1001;
 }
 
 .card .main-title {
@@ -23,7 +34,6 @@
 
 .card.expanded {
     overflow-y: scroll;
-    transform: scale(1.2);
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
 }
 
@@ -103,6 +113,10 @@
     .card6 {
         top: calc(426px + 10vh);
     }
+
+    .card7 {
+        top: calc(642px + 10vh);
+    }
 }
 
 @media (min-width: 768px) {
@@ -120,5 +134,9 @@
     .card5,
     .card6 {
         top: calc(550px + 4vh);
+    }
+
+    .card7 {
+        top: calc(775px + 4vh);
     }
 }

@@ -1,8 +1,28 @@
 #page-wrap {
     width: 100%;
     padding: 10vmax 3vmax;
-    max-height: 90vh;
+    min-height: 100vh;
     overflow-y: auto;
+}
+
+.bottom-spacer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200px;
+}
+
+@media (min-width: 768px) {
+    .bottom-spacer {
+        top: calc(950px + 4vh);
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bottom-spacer {
+        top: calc(750px + 10vh);
+    }
 }
 
 .projects {

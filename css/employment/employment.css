@@ -4,6 +4,10 @@ body {
 
 #page-wrap {
     width: 100%;
+    padding-left: 3vmax;
+    padding-right: 5vmax;
+    padding-top: 10vh;
+    max-height: 90vh;
     overflow-y: auto;
 }
 
@@ -15,11 +19,128 @@ body {
     text-decoration: underline !important;
 }
 
-.employment-text-messages-lottie-animation {
+.content {
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-size: 5vw;
+    margin-bottom: 3vh;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 3vw;
+}
+
+.timeline::before {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 70vh;
-    width: 75%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #37ebab, #8b5cf6);
+}
+
+.job {
+    position: relative;
+    margin-bottom: 4vh;
+    padding-left: 2vw;
+}
+
+.job::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #37ebab;
+    border: 3px solid white;
+}
+
+.job h2 {
+    color: #37ebab;
+    font-size: 2.5vw;
+    margin-bottom: 0.5vh;
+}
+
+.company {
+    font-size: 1.8vw;
+    font-weight: bold;
+    color: white;
+    margin: 0.5vh 0;
+}
+
+.date {
+    font-size: 1.5vw;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.3vh 0;
+}
+
+.location {
+    font-size: 1.4vw;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0.3vh 0 1vh 0;
+}
+
+.achievements {
+    list-style: none;
+    padding-left: 0;
+}
+
+.achievements li {
+    color: white;
+    font-size: 1.3vw;
+    margin-bottom: 0.5vh;
+    padding-left: 1.5vw;
+    position: relative;
+}
+
+.achievements li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #382098;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    #page-wrap {
+        padding-left: 2vmax;
+        padding-right: 2vmax;
+    }
+
+    h1 {
+        font-size: 8vw;
+    }
+
+    .timeline {
+        padding-left: 2vw;
+    }
+
+    .job h2 {
+        font-size: 5vw;
+    }
+
+    .company {
+        font-size: 4vw;
+    }
+
+    .date {
+        font-size: 3.5vw;
+    }
+
+    .location {
+        font-size: 3vw;
+    }
+
+    .achievements li {
+        font-size: 3vw;
+        padding-left: 2vw;
+    }
 }
