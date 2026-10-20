@@ -24,19 +24,32 @@
   // so the reminder links here and this page forwards to tel:<n>.
   // After the dialer opens, the page tries to close itself so Telegram's in-app
   // browser does not stay on top of the chat: Telegram.WebApp.close() (only works
-  // when opened as a Mini App), then window.close() (allowed for a fresh tab whose
+  // when opened as a Mini App), else window.close() (allowed for a fresh tab whose
   // history has one entry), and as a last resort a tg:// link back to the bot chat.
+  // Mini App mode (preferred): the number links to t.me/<bot>?startapp=<code>, Telegram
+  // opens this page as the bot's Main Mini App, and Telegram.WebApp.close() really closes
+  // it (a plain in-app browser page cannot: iOS keeps it minimized as a bar).
+  // start_param alphabet is [A-Za-z0-9_-], so * # + travel as s h p.
+  var tg = (window.Telegram && Telegram.WebApp) ? Telegram.WebApp : null;
+  var hp = new URLSearchParams(location.hash.slice(1));
+  var startParam = (tg && tg.initDataUnsafe && tg.initDataUnsafe.start_param) || hp.get('tgWebAppStartParam') || '';
+  var mini = !!(tg && (tg.initData || startParam));
   var q = new URLSearchParams(location.search);
-  var n = (q.get('n') || '').replace(/[^0-9*#+]/g, '');
+  var n = startParam ? startParam.replace(/s/g, '*').replace(/h/g, '#').replace(/p/g, '+') : (q.get('n') || '');
+  n = n.replace(/[^0-9*#+]/g, '');
   var bot = (q.get('b') || '').replace(/[^A-Za-z0-9_]/g, '');
   var href = 'tel:' + n.replace(/#/g, '%23');
   var a = document.getElementById('dial');
   var back = document.getElementById('back');
   var chat = bot ? 'tg://resolve?domain=' + bot : '';
-  if (chat) { back.href = chat; }
+  if (mini) { try { tg.ready(); } catch (e) {} back.textContent = 'סגירה'; back.href = '#'; back.style.display = 'block';
+              back.onclick = function (e) { e.preventDefault(); closeMini(); }; }
+  else if (chat) { back.href = chat; }
+
+  function closeMini() { try { tg.close(); } catch (e) {} }
 
   function tryClose() {
-    try { if (window.Telegram && Telegram.WebApp && Telegram.WebApp.initData) { Telegram.WebApp.close(); } } catch (e) {}
+    if (mini) { closeMini(); return; }
     try { window.close(); } catch (e) {}
     if (chat) { back.style.display = 'block'; }
   }
@@ -47,11 +60,15 @@
     if (closed) return;
     closed = true;
     tryClose();
-    // Still here a moment later (window.close ignored): jump back to the chat once.
-    if (chat) { setTimeout(function () { if (document.visibilityState === 'visible') location.href = chat; }, 400); }
+    // Plain browser, still here a moment later (window.close ignored): jump back to the chat once.
+    if (!mini && chat) { setTimeout(function () { if (document.visibilityState === 'visible') location.href = chat; }, 400); }
   }
   document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'hidden') { left = true; }
+    if (document.visibilityState === 'hidden') {
+      left = true;
+      // The call is under way: close the Mini App now so nothing is left when Omer returns.
+      if (mini) { setTimeout(closeMini, 300); }
+    }
     else if (left) { afterDial(); }
   });
   window.addEventListener('pagehide', function () { left = true; });
