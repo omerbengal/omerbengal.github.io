@@ -94,6 +94,16 @@
         e.preventDefault();
         if (openExternal('tap')) { setTimeout(closeMini, 2500); }
       };
+      // Telegram iOS honours web_app_open_link only within 10s of a touch INSIDE the Mini App
+      // (WebAppController.swift: lastTouchTimestamp), so the load-time call is ignored there.
+      // To keep it at one tap, the whole screen is the target: a tap anywhere opens Safari.
+      var hint = document.getElementById('hint');
+      if (hint && iosMini) { hint.textContent = 'לחץ בכל מקום לחיוג'; hint.style.display = 'block'; }
+      document.body.style.cursor = 'pointer';
+      document.addEventListener('click', function (e) {
+        if (e.target === a || e.target === back || a.contains(e.target) || back.contains(e.target)) return;
+        if (openExternal('screen')) { setTimeout(closeMini, 2500); }
+      });
       if (iosMini) { openExternal('load'); }
       else { location.replace(href); }
     } else {

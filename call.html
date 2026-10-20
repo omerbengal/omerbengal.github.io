@@ -19,12 +19,13 @@
 </head>
 <body>
 <a id="dial" href="#">📞</a>
+<div id="hint" style="display:none;font-size:22px;opacity:.8;"></div>
 <a id="back" href="#">חזרה לצ'אט</a>
 <div id="dbg" style="position:fixed;bottom:6px;left:6px;right:6px;font-size:11px;opacity:.55;direction:ltr;text-align:left;word-break:break-all;"></div>
 <script>
   // Loader: the dial logic lives in call.js, fetched with a fresh query every time so a cached
   // call.html (GitHub Pages sends max-age=600; Telegram's webview keeps it) never runs old code.
-  window.CALL_VER = '2026-10-20c';
+  window.CALL_VER = '2026-10-20d';
   document.write('<script src="call.js?t=' + Date.now() + '"><\/script>');
 </script>
 </body>
