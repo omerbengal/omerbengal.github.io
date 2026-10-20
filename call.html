@@ -5,24 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>חיוג</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-  :root { --bg:#ffffff; --fg:#111111; --btn:#1f7a3a; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#111111; --fg:#f2f2f2; --btn:#2e9e50; } }
-  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-         background:var(--bg); color:var(--fg); font-family:system-ui, sans-serif; }
+  :root { --bg:#ffffff; --fg:#111111; --btn:#1f7a3a; --btn2:#2a6fdb; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111111; --fg:#f2f2f2; --btn:#2e9e50; --btn2:#3d82ef; } }
+  body { margin:0; min-height:100vh; display:flex; flex-direction:column; gap:18px; align-items:center;
+         justify-content:center; background:var(--bg); color:var(--fg); font-family:system-ui, sans-serif; }
   a { display:block; padding:22px 40px; border-radius:16px; background:var(--btn); color:#fff;
-      font-size:28px; text-decoration:none; direction:ltr; }
+      font-size:28px; text-decoration:none; direction:ltr; text-align:center; }
+  #back { display:none; background:var(--btn2); font-size:20px; padding:16px 28px; direction:rtl; }
 </style>
 </head>
 <body>
 <a id="dial" href="#">📞</a>
+<a id="back" href="#">חזרה לצ'אט</a>
 <script>
   // Tap-to-dial bridge for Kai's Telegram reminders: Telegram strips tel: links,
   // so the reminder links here and this page forwards to tel:<n>.
-  var n = (new URLSearchParams(location.search).get('n') || '').replace(/[^0-9*#+]/g, '');
+  // After the dialer opens, the page tries to close itself so Telegram's in-app
+  // browser does not stay on top of the chat: Telegram.WebApp.close() (only works
+  // when opened as a Mini App), then window.close() (allowed for a fresh tab whose
+  // history has one entry), and as a last resort a tg:// link back to the bot chat.
+  var q = new URLSearchParams(location.search);
+  var n = (q.get('n') || '').replace(/[^0-9*#+]/g, '');
+  var bot = (q.get('b') || '').replace(/[^A-Za-z0-9_]/g, '');
   var href = 'tel:' + n.replace(/#/g, '%23');
   var a = document.getElementById('dial');
-  if (n) { a.href = href; a.textContent = '📞 ' + n; location.replace(href); }
+  var back = document.getElementById('back');
+  var chat = bot ? 'tg://resolve?domain=' + bot : '';
+  if (chat) { back.href = chat; }
+
+  function tryClose() {
+    try { if (window.Telegram && Telegram.WebApp && Telegram.WebApp.initData) { Telegram.WebApp.close(); } } catch (e) {}
+    try { window.close(); } catch (e) {}
+    if (chat) { back.style.display = 'block'; }
+  }
+
+  var left = false;   // the dialer took the screen
+  var closed = false;
+  function afterDial() {
+    if (closed) return;
+    closed = true;
+    tryClose();
+    // Still here a moment later (window.close ignored): jump back to the chat once.
+    if (chat) { setTimeout(function () { if (document.visibilityState === 'visible') location.href = chat; }, 400); }
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') { left = true; }
+    else if (left) { afterDial(); }
+  });
+  window.addEventListener('pagehide', function () { left = true; });
+
+  if (n) {
+    a.href = href;
+    a.textContent = '📞 ' + n;
+    location.replace(href);
+  }
 </script>
 </body>
 </html>
